@@ -246,6 +246,34 @@ def buy_coin(symbol):
                 )
             )
         )
+        if config.PAPER_TRADING:
+
+            reduce_balance(trade_amount)
+
+            active_trade = {
+                "symbol": symbol,
+                "buy_price": round(buy_price, 8),
+                "current_price": round(buy_price, 8),
+                "tp_price": round(tp_price, 8),
+                "sl_price": round(sl_price, 8),
+                "amount": amount,
+                "highest_price": round(buy_price, 8),
+                "profit_percent": 0,
+                "highest_profit": 0,
+                "open_time": time.time()
+            }
+
+            save_trade()
+
+            print("PAPER BUY:", symbol)
+
+            telegram_bot.send_telegram(
+                f"🧪 PAPER BUY\n\n"
+                f"Coin: {symbol}\n"
+                f"Buy Price: {buy_price:.8f}"
+            )
+
+            return
 
         active_trade = {
 
