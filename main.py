@@ -10,6 +10,8 @@ import scanner
 from scanner import start_scanner
 from trader import start_trader
 from history import get_stats
+from history import get_stats
+from paper_wallet import get_balance
 
 app = Flask(__name__)
 from datetime import datetime
@@ -145,17 +147,7 @@ def home():
     now = datetime.now(
         ZoneInfo("Asia/Jakarta")
     ).strftime("%H:%M:%S")
-    wallet = 0
-    try:
-        exchange = ccxt.indodax({
-            'apiKey': config.API_KEY,
-            'secret': config.SECRET_KEY,
-            'enableRateLimit': True
-        })
-        balance = exchange.fetch_balance()
-        wallet = balance['total'].get('IDR',0)
-    except:
-        pass
+    wallet = get_balance()
 
     html = f"<html><head>{pwa()}{style()}</head><body>{topbar()}"
 
