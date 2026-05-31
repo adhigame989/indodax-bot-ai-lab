@@ -10,11 +10,9 @@ import scanner
 from scanner import start_scanner
 from trader import start_trader
 from history import get_stats
-from history import get_stats
 from paper_wallet import get_balance
 
 app = Flask(__name__)
-from datetime import datetime
 
 BOT_START_TIME = datetime.now()
 
@@ -259,25 +257,11 @@ def home():
 
         t = trader.active_trade
 
-        color = "green"
+        color = "green" if t.get("profit_percent", 0) >= 0 else "red"
 
-        if t.get("profit_percent", 0) < 0:
-            color = "red"
-
-        current_value = (
-            t["current_price"]
-            * t["amount"]
-        )
-
-        buy_value = (
-            t["buy_price"]
-            * t["amount"]
-        )
-
-        profit_idr = (
-            current_value
-            - buy_value
-        )
+        current_value = t["current_price"] * t["amount"]
+        buy_value = t["buy_price"] * t["amount"]
+        profit_idr = current_value - buy_value
 
         html += f"""
         <div class="trade-box">
