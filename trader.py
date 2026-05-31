@@ -7,6 +7,7 @@ import config
 import history
 import scanner
 import telegram_bot
+from paper_wallet import get_balance, reduce_balance
 
 BOT_RUNNING = False
 
@@ -138,12 +139,11 @@ def buy_coin(symbol):
 
     try:
 
-        balance = exchange.fetch_balance()
-
-        idr = balance['free'].get(
-            'IDR',
-            0
-        )
+        if config.PAPER_TRADING:
+            idr = get_balance()
+        else:
+            balance = exchange.fetch_balance()
+            idr = balance['free'].get('IDR', 0)
 
         trade_amount = get_trade_amount(
             idr
