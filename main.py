@@ -262,7 +262,22 @@ def home():
         color = "green"
 
         if t.get("profit_percent", 0) < 0:
-            color = "red"
+        color = "red"
+
+        current_value = (
+            t["current_price"]
+            * t["amount"]
+        )
+
+        buy_value = (
+            t["buy_price"]
+            * t["amount"]
+        )
+
+        profit_idr = (
+            current_value
+            - buy_value
+        )
 
         html += f"""
         <div class="trade-box">
@@ -270,10 +285,18 @@ def home():
         <b>ACTIVE POSITION</b><br><br>
 
         Coin : {t['symbol']}<br>
-        Buy : {t['buy_price']}<br>
+
+        Buy Price : {t['buy_price']:,.0f}<br>
+
+        Current Price : {t['current_price']:,.0f}<br>
+
+        Highest Price : {t['highest_price']:,.0f}<br><br>
+
+        Current Value : Rp {current_value:,.0f}<br>
 
         <span class="{color}">
-        Profit : {t['profit_percent']}%
+        Profit : {t['profit_percent']}%<br>
+        Profit IDR : Rp {profit_idr:,.0f}
         </span>
 
         </div>
