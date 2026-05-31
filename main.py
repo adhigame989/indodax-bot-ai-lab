@@ -262,7 +262,7 @@ def home():
         color = "green"
 
         if t.get("profit_percent", 0) < 0:
-        color = "red"
+            color = "red"
 
         current_value = (
             t["current_price"]
