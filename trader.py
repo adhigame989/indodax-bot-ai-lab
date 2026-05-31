@@ -285,8 +285,7 @@ def buy_coin(symbol):
                 8
             ),
 
-            "profit_percent":
-            0
+            "profit_percent":0
             "highest_profit": 0,
             "open_time": time.time()
 
