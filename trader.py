@@ -287,6 +287,8 @@ def buy_coin(symbol):
 
             "profit_percent":
             0
+            "highest_profit": 0,
+            "open_time": time.time()
 
         }
 
@@ -495,6 +497,19 @@ def monitor_trade():
             profit_percent,
             2
         )
+        if (
+            profit_percent >
+            active_trade.get(
+                "highest_profit",
+                0
+            )
+        ):
+            active_trade[
+                "highest_profit"
+            ] = round(
+                profit_percent,
+                2
+            )
 
         if (
             current_price >
