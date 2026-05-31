@@ -178,6 +178,7 @@ def home():
     else:
         status_text = "🔴 BOT STOPPED"
         status_class = "red"
+    paper_mode = "🧪 PAPER" if config.PAPER_TRADING else "💰 LIVE"
 
     html += f"""
     <div class="trade-box">
@@ -216,6 +217,11 @@ def home():
       <div class="card">
         <div class="title">LOSS</div>
         <div class="value red">{loss}</div>
+      </div>
+      
+      <div class="card">
+        <div class="title">MODE</div>
+        <div class="value yellow">{paper_mode}</div>
       </div>
 
       <div class="card">
