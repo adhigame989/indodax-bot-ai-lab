@@ -250,6 +250,8 @@ def home():
     <b>MARKET STATUS</b><br><br>
 
     BOT : {BOT_STATUS}<br>
+    
+    MODE : {paper_mode}<br>
 
     UPTIME : {uptime}<br>
 
