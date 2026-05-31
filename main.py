@@ -35,7 +35,7 @@ def style():
     <style>
     body{background:#020617;color:white;font-family:Arial,sans-serif;margin:0;padding:15px;padding-bottom:90px}
     .topbar{background:#0f172a;padding:20px;border-radius:20px;border:1px solid #1e293b;margin-bottom:15px}
-    .logo{font-size:28px;font-weight:bold;color:#38bdf8}
+    .logo{font-size:28px;font-weight:bold;color:#ff3333;text-shadow:0 0 12px rgba(255,51,51,0.7);}
     .subtitle{color:#94a3b8}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
     .card,.trade-box,.table-box{background:#0f172a;border:1px solid #1e293b;border-radius:18px;padding:15px;margin-bottom:12px}
@@ -79,7 +79,7 @@ def topbar():
             <div>
 
                 <div class="logo">
-                    INDODAX AI BOT
+                    INDODAX AI BOT LAB
                 </div>
 
                 <div class="subtitle">
@@ -87,7 +87,7 @@ def topbar():
                 </div>
 
                 <div class="creator">
-                    By: Adhi Prasetyo
+                    Testing & Development
                 </div>
 
             </div>
@@ -104,7 +104,7 @@ def topbar():
     <div class="bottom-nav">
         <a href="/">🏠 Home</a>
         <a href="/scanner">📈 Scanner</a>
-        <a href="/position">🤖 Bot</a>
+        <a href="/position">📊 Monitor</a>
         <a href="/history">📜 History</a>
     </div>
     """
